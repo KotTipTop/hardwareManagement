@@ -23,10 +23,4 @@ public class UserDetailsViewConverter implements SimpleObjectConverter<User, Use
 				.department(from.getDepartment() !=null ? DepartmentNameOnlyDTO.builder().id(from.getDepartment().getId()).name(from.getDepartment().getName()).build(): null).build();
 				
 	}
-//	private RoleNameOnlyDTO findRole(Set<Role> roles) {
-//		
-//		return history.stream().filter(h -> h.getAllocationEndDate()==null).findAny().map(this::mapToOwnerShipDto).orElse(null);
-//	}
-	
-	
 }

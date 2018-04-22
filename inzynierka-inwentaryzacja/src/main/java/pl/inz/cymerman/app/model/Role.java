@@ -12,9 +12,7 @@ import lombok.Data;
 @Entity
 @Data
 public class Role implements GrantedAuthority {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

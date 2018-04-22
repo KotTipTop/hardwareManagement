@@ -22,7 +22,15 @@ import pl.inz.cymerman.app.model.Department;
 import pl.inz.cymerman.app.model.User;
 import pl.inz.cymerman.app.service.DepartmentService;
 import pl.inz.cymerman.app.service.UserService;
-
+/*
+ * Department controller for department view and tables. We have:
+ * - / enter page of departmens
+ * - add department, custom name, id generated
+ * - edit department, simple name editor
+ * - details page of every department we choose. 
+ * 
+ * 
+ */
 @Controller
 @RequestMapping("/departments")
 public class DepartmentController {

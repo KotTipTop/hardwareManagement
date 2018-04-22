@@ -20,8 +20,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		//tu mozemy skonfigurowac ktore url'e maja byc pomijane przez naszego security context np: wczytywanie obrazkow, 
-		//plikow css itp powinno nie podlegac security ;), pod warunkiem ze sa pod sciezka /resources/costamdalej
+		
+		//które url mogą być pomijane przez security context.
 		web.ignoring().antMatchers("/resources/**");
 
 		
@@ -44,7 +44,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()//
 				.rememberMe()
 				.and()
-				.exceptionHandling().accessDeniedPage("/denide");// url bez kontrollera (nalezy dodac)
+				.exceptionHandling().accessDeniedPage("/denide");
 	}
 
 	@Autowired

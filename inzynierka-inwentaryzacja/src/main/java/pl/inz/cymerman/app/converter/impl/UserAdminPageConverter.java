@@ -25,7 +25,4 @@ public class UserAdminPageConverter implements SimpleObjectConverter<User, UserD
 				.build();
 
 	}
-}// kupa?
-	// .role(RoleDTO.builder()
-	// .id(from.getId())
-	// .roleName(from.getRoles().stream().filter(o->o.getRoleName().equals("ROLE_ADMIN")).toString()).build()).build();
+}

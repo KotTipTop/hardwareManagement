@@ -69,18 +69,7 @@ public class EquipmentController {
 		model.addAttribute("categoryList", converter.convertAll(categoryService.findAll(), CategoryNameOnlyDTO.class));
 		Equipment e = equipmentService.findOne(equipment.getId());
 		Category c = categoryService.findOne(equipment.getCategoryName().getId());
-		e.setCategory(c);
-		e.setManufacturer(equipment.getManufacturer());
-		e.setModel(equipment.getModel());
-		e.setDateOfPurchase(equipment.getDateOfPurchase());
-		e.setSerialNumber(equipment.getSerialNumber());
-		e.setSoftware(equipment.getSoftware());
-		e.setTechnicalParameters(equipment.getTechnicalParameters());
-		e.setPeripherials(equipment.getPeripherials());
-		e.setPrice(equipment.getPrice());
-		e.setWarranty(equipment.getWarranty());
-		e.setProject(projectService.findOne(equipment.getProject().getId()));
-		e.setLocation(locationService.findOne(equipment.getLocation().getId()));
+		equipmentService.editEquipment(equipment, e, c);
 		equipmentService.save(e);
 		return "redirect:/equipment/details?id="+e.getId();
 	}

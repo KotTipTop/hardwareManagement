@@ -24,8 +24,6 @@ import pl.inz.cymerman.app.service.DepartmentService;
 import pl.inz.cymerman.app.service.RoleService;
 import pl.inz.cymerman.app.service.UserService;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import org.apache.commons.lang3.StringUtils;
 
 @Controller
@@ -58,20 +56,7 @@ public class UserController {
 	@PostMapping("/add")
 	public String add(ModelMap model, @ModelAttribute("AddNewModal") UserAddFormDTO e) {
 		User user = converter.convert(e, User.class);
-		String nameLowCase = StringUtils.stripAccents(user.getName().toLowerCase());
-		String surnameLowCase = StringUtils.stripAccents(user.getSurname().toLowerCase());
-		String login = nameLowCase.charAt(0) + "." + surnameLowCase;
-		if (userService.isUserWithSameLogin(login)) {
-			for (int i = 1; i < 10; i++) {
-				if (!userService.isUserWithSameLogin(login + i)) {
-					user.setLogin(nameLowCase.charAt(0) + "." + surnameLowCase + i);
-					break;
-				}
-			}
-		} else {
-			user.setLogin(nameLowCase.charAt(0) + "." + surnameLowCase);
-		}
-		user.setPassword(new BCryptPasswordEncoder().encode(nameLowCase));
+		userService.setPassword(user);
 		userService.save(user);
 		return "redirect:/employees/";
 	}
@@ -94,14 +79,7 @@ public class UserController {
 		model.addAttribute("roleList", converter.convertAll(roleService.findAll(), RoleDTO.class));
 		User u = userService.findOne(user.getId());
 		Department d = departmentService.findOne(user.getDepartmentId());
-		u.setName(user.getName());
-		u.setSurname(user.getSurname());
-		u.setPhoneNumber(user.getPhoneNumber());
-		u.setEmail(user.getEmail());
-		u.setLogin(user.getLogin());
-		u.setPassword(user.getPassword());
-		u.setDepartment(d);
-		u.setRoles(new HashSet<>(new HashSet<>(Arrays.asList(roleService.findOne(user.getRoleId())))));
+		userService.editUserDetails(user, u, d);
 		userService.save(u);
 		return "redirect:/employees/details?id=" + u.getId();
 	}
