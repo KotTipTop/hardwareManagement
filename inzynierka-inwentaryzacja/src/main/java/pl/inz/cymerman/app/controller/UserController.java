@@ -19,6 +19,7 @@ import pl.inz.cymerman.app.dto.UserEditFormDTO;
 import pl.inz.cymerman.app.dto.UserTableViewDTO;
 import pl.inz.cymerman.app.dto.UserViewDetailsDTO;
 import pl.inz.cymerman.app.model.Department;
+import pl.inz.cymerman.app.model.Equipment;
 import pl.inz.cymerman.app.model.User;
 import pl.inz.cymerman.app.service.DepartmentService;
 import pl.inz.cymerman.app.service.RoleService;
@@ -93,5 +94,17 @@ public class UserController {
 		b = true;
 		model.addAttribute("info", b);
 		return "redirect:/employees/details?id=" + user.getId();
+	}
+	@GetMapping("/delete")
+	public String delete(ModelMap model,Long id ) {
+		userService.delete(id);
+		return "redirect:/employees/";
+	}
+	@GetMapping("/active")
+	public String active(ModelMap model,Long id ) {
+		User e = userService.findOne(id);
+		e.setActive(true);
+		userService.save(e);
+		return "redirect:/employees/";
 	}
 }

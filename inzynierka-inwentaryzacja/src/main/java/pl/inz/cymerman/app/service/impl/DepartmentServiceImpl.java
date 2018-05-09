@@ -35,7 +35,9 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Override
 	public void delete(Long id) {
-		departmentRepository.delete(id);
+		Department d =departmentRepository.findOne(id);
+		d.setActive(false);
+		departmentRepository.saveAndFlush(d);
 		
 	}
 

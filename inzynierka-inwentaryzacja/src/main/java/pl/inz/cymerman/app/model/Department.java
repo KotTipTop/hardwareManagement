@@ -26,5 +26,6 @@ public class Department {
 	private String name;
 	@OneToMany(mappedBy = "department")
 	private Set<User> workers;
+	private boolean active;
 
 }

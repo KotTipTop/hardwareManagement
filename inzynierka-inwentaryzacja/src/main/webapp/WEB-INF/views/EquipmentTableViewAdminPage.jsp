@@ -166,6 +166,7 @@
 									<th>S/N:</th>
 									<th>Cena</th>
 									<th>Przypisany:</th>
+									<th>Aktywny:</th>
 									<th>Akcja</th>
 								</tr>
 							</thead>
@@ -179,6 +180,7 @@
 									<th>S/N:</th>
 									<th>Cena:</th>
 									<th>Przypisany:</th>
+									<th>Aktywny:</th>
 									<th>Akcja</th>
 								</tr>
 							</tfoot>
@@ -194,6 +196,16 @@
 										<td>${e.serialNumber}</td>
 										<td>${e.price}</td>
 										<td>${e.owner.fullName}</td>
+										<td><c:choose>
+										
+										<c:when test ="${e.active==true}">
+										aktywny
+										</c:when>
+										<c:otherwise>
+										nieaktywny
+										</c:otherwise>
+										</c:choose>
+										</td>
 										<td><c:choose>
 												<c:when test="${e.owner.fullName==null}">
 													<form action="/ownership/assign" method="post">
@@ -213,7 +225,23 @@
 												
 												<input type="hidden" name="id" value="${e.id}" />
 												<button type="submit" class="btn btn-info btn-xs">Szczegóły</button>
-											</form></td>
+											</form>
+											<div class="dropdown-divider"></div>
+											<c:choose>
+											<c:when test="${e.active==true}">
+											<form action="/equipment/delete" method="get">
+												<input type="hidden" name="id" value="${e.id}" />
+												<button type="submit" class="btn btn-danger btn-xs">Usuń</button>
+											</form>
+											</c:when>
+											<c:otherwise>
+											<form action="/equipment/active" method="get">
+												<input type="hidden" name="id" value="${e.id}" />
+												<button type="submit" class="btn btn-success btn-xs">Aktywuj</button>
+											</form>
+											</c:otherwise>
+											</c:choose>
+											</td>
 									</tr>
 									<!-- Assign Modal-->
 									<div class="modal fade" id="AssignNewModal_${e.id}" tabindex="-1" role="dialog" aria-labelledby="AssignNewModalLabel"

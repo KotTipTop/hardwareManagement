@@ -19,6 +19,7 @@ import pl.inz.cymerman.app.dto.DepartmentViewDetailsDTO;
 import pl.inz.cymerman.app.dto.UserDetailsAdminPageInfoDTO;
 import pl.inz.cymerman.app.dto.UserViewDetailsDTO;
 import pl.inz.cymerman.app.model.Department;
+import pl.inz.cymerman.app.model.Equipment;
 import pl.inz.cymerman.app.model.User;
 import pl.inz.cymerman.app.service.DepartmentService;
 import pl.inz.cymerman.app.service.UserService;
@@ -76,6 +77,17 @@ public class DepartmentController {
 	    model.addAttribute("workers", converter.convertAll(departmentService.findOne(id).getWorkers().stream().collect(Collectors.toList()), UserViewDetailsDTO.class));
 		return "DepartmentDetailsPage";
 	}
-
+	@GetMapping("/delete")
+	public String delete(ModelMap model,Long id ) {
+		departmentService.delete(id);
+		return "redirect:/departments/";
+	}
+	@GetMapping("/active")
+	public String active(ModelMap model,Long id ) {
+		Department e = departmentService.findOne(id);
+		e.setActive(true);
+		departmentService.save(e);
+		return "redirect:/departments/";
+	}
 
 }

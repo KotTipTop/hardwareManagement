@@ -19,7 +19,7 @@ public class UserTableViewConverter implements SimpleObjectConverter<User, UserT
 				.phoneNumber(from.getPhoneNumber())
 				.email(from.getEmail())
 				.departmentName(from.getDepartment() !=null ? DepartmentNameOnlyDTO.builder().id(from.getDepartment().getId())
-						.name(from.getDepartment().getName()).build(): null).build();
+						.name(from.getDepartment().getName()).build(): null).active(from.isActive()).build();
 	}
 
 }

@@ -27,7 +27,7 @@ public class UserAddToUserConverter implements SimpleObjectConverter<UserAddForm
 	public User mapTo(UserAddFormDTO from) {
 		return User.builder().name(from.getName()).surname(from.getSurname()).phoneNumber(from.getPhoneNumber())
 				.department(departmentRepository.findOne(from.getDepartmentId()))
-				.roles(new HashSet<>(Arrays.asList(roleRepository.findOne(from.getRoleId())))).build();
+				.roles(new HashSet<>(Arrays.asList(roleRepository.findOne(from.getRoleId())))).active(true).build();
 
 	}
 }

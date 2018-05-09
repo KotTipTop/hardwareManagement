@@ -46,7 +46,6 @@ import pl.inz.cymerman.app.service.UserService;
 @ContextConfiguration(classes = DepartmentControllerTest.DepartmentControllerTestConfiguration.class)
 @WebAppConfiguration
 public class DepartmentControllerTest {
-	//FIRST - dla testow jednostkowych
 	private MockMvc mockMvc;
 
 	@Autowired
@@ -70,6 +69,8 @@ public class DepartmentControllerTest {
 	}
 
 	// redirect i post
+	
+	//add
 	@Test
 	public void shouldGetDepartmentsPageWithAddedNewDepartment() throws Exception {
 		mockMvc.perform(post("/departments/add?name=ST"))//
@@ -77,8 +78,10 @@ public class DepartmentControllerTest {
 				.andExpect(redirectedUrl("/departments/"));//
 	}
 
+	//enter
 	@Test
 	public void shouldGetDepartmentListandUserLoggedIn() throws Exception {
+		//mocks
 		List<Department> departments = Arrays.asList(Department.builder().id(10L).name("ST").build(), //
 				Department.builder().id(11L).name("DO").build()//
 		);
@@ -91,14 +94,14 @@ public class DepartmentControllerTest {
 		Mockito.when(mockObjectConverter.convertAll(departments, DepartmentTableViewDTO.class))//
 				.thenReturn(Arrays.asList(DepartmentTableViewDTO.builder().id(100L).build(), //
 						DepartmentTableViewDTO.builder().id(101L).build()));
-		// mocki tutaj, sa specyficzne dla get'a
+		//assert
 		mockMvc.perform(get("/departments/"))//
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("userLoggedIn", UserDetailsAdminPageInfoDTO.builder().id(u.getId()).build()))
 				.andExpect(model().attribute("departmentList", Arrays.asList(DepartmentTableViewDTO.builder().id(100L).build(), //
 						DepartmentTableViewDTO.builder().id(101L).build())));//
 	}
-	
+	//detail
 	@Test
 	public void shouldGetDepartmentDetail() throws Exception {
 		Department d = Department.builder().id(101L).build();

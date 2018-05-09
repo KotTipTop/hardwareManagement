@@ -108,7 +108,7 @@
 								<tr>
 									<th>id</th>
 									<th>Nazwa</th>
-									<th>Kierownik działu</th>
+									<th>Aktywny</th>
 									<th>Liczba pracowników</th>
 									<th>Akcja</th>
 								</tr>
@@ -117,7 +117,7 @@
 								<tr>
 									<th>id</th>
 									<th>Nazwa</th>
-									<th>Kierownik działu</th>
+									<th>Aktywny</th>
 									<th>Liczba pracowników</th>
 									<th>Akcja</th>
 								</tr>
@@ -128,13 +128,36 @@
 									<tr>
 										<td>${e.id}</td>
 										<td>${e.name}</td>
-										<td>-</td>
+										<td><c:choose>
+										
+										<c:when test ="${e.active==true}">
+										aktywny
+										</c:when>
+										<c:otherwise>
+										nieaktywny
+										</c:otherwise>
+										</c:choose></td>
 										<td>${e.numberOfWorkers}</td>
 										<td>
 											<form action="/departments/details" method="get">
 												<input type="hidden" name="id" value="${e.id}" />
 												<button type="submit" class="btn btn-info btn-xs">Szczegóły</button>
 											</form>
+											<div class="dropdown-divider"></div>
+											<c:choose>
+											<c:when test="${e.active==true}">
+											<form action="/departments/delete" method="get">
+												<input type="hidden" name="id" value="${e.id}" />
+												<button type="submit" class="btn btn-danger btn-xs">Usuń</button>
+											</form>
+											</c:when>
+											<c:otherwise>
+											<form action="/departments/active" method="get">
+												<input type="hidden" name="id" value="${e.id}" />
+												<button type="submit" class="btn btn-success btn-xs">Aktywuj</button>
+											</form>
+											</c:otherwise>
+											</c:choose>
 										</td>
 									</tr>
 

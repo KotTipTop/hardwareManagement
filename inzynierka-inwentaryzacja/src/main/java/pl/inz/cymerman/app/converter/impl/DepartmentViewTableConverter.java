@@ -20,7 +20,7 @@ public class DepartmentViewTableConverter implements SimpleObjectConverter<Depar
 	@Override
 	public DepartmentTableViewDTO mapTo(Department from) {
 		return DepartmentTableViewDTO.builder()
-				.id(from.getId()).Name(from.getName()).numberOfWorkers(departmentRepository.usersByDepartment(from.getName())).build();
+				.id(from.getId()).Name(from.getName()).numberOfWorkers(departmentRepository.usersByDepartment(from.getName())).active(from.isActive()).build();
 	}
 
 }

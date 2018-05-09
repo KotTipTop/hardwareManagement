@@ -142,6 +142,7 @@
 									<th>Numer telefonu</th>
 									<th>Adres e-mail</th>
 									<th>Dział</th>
+									<th>Aktywny</th>
 									<th>Akcja</th>
 								</tr>
 							</thead>
@@ -152,6 +153,7 @@
 									<th>Numer telefonu</th>
 									<th>Adres e-mail</th>
 									<th>Dział</th>
+									<th>Aktywny</th>
 									<th>Akcja</th>
 								</tr>
 							</tfoot>
@@ -164,11 +166,35 @@
 										<td>${e.phoneNumber}</td>
 										<td>${e.email}</td>
 										<td>${e.departmentName.name}</td>
+										<td><c:choose>
+										
+										<c:when test ="${e.active==true}">
+										aktywny
+										</c:when>
+										<c:otherwise>
+										nieaktywny
+										</c:otherwise>
+										</c:choose></td>
 										<td>
 											<form action="/employees/details" method="get">
 												<input type="hidden" name="id" value="${e.id}" />
 												<button type="submit" class="btn btn-info btn-xs">Szczegóły</button>
 											</form>
+											<div class="dropdown-divider"></div>
+											<c:choose>
+											<c:when test="${e.active==true}">
+											<form action="/employees/delete" method="get">
+												<input type="hidden" name="id" value="${e.id}" />
+												<button type="submit" class="btn btn-danger btn-xs">Usuń</button>
+											</form>
+											</c:when>
+											<c:otherwise>
+											<form action="/employees/active" method="get">
+												<input type="hidden" name="id" value="${e.id}" />
+												<button type="submit" class="btn btn-success btn-xs">Aktywuj</button>
+											</form>
+											</c:otherwise>
+											</c:choose>
 										</td>
 									</tr>
 

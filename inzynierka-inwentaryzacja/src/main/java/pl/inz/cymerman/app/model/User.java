@@ -43,7 +43,7 @@ public class User implements UserDetails {
 	@ManyToOne
 	@JoinColumn(name="department_id")
 	private Department department;
-
+	private boolean active;
 	private String login;
 	private String password;
 

@@ -16,4 +16,5 @@ private String fullName;
 private String phoneNumber;
 private String email;
 private DepartmentNameOnlyDTO departmentName;
+private boolean active;
 }

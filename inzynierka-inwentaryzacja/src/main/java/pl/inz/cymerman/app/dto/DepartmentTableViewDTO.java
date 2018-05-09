@@ -13,4 +13,5 @@ public class DepartmentTableViewDTO {
 private Long id;
 private String Name;
 private Long numberOfWorkers;
+private boolean active;
 }

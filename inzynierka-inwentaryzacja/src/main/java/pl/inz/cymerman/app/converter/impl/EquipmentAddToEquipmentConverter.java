@@ -38,6 +38,7 @@ public class EquipmentAddToEquipmentConverter implements SimpleObjectConverter<E
 				.project(projectRepository.findOne(from.getProjectId()))//
 				.location(locationRepository.findOne(from.getLocationId()))//
 				.warranty(from.getWarranty())
+				.active(true)
 				.build();
 	}
 

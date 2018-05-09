@@ -25,6 +25,7 @@ public class EquipmentTableViewConverter implements SimpleObjectConverter<Equipm
 				.serialNumber(from.getSerialNumber())
 				.price(from.getPrice())
 				.owner(findOwner(from.getHistory()))
+				.active(from.isActive())
 				.build();
 	}
 	private OwnershipOwnerOnlyDTO findOwner(Set<Ownership> history) {

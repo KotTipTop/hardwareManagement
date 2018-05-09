@@ -31,15 +31,4 @@ public class LocationServiceImpl implements LocationService {
 		return locationRepository.findOne(id);
 	}
 
-	@Override
-	public void delete(Long id) {
-		locationRepository.delete(id);
-
-	}
-
-	@Override
-	public Location save(Location model) {
-		return locationRepository.saveAndFlush(model);
-	}
-
 }

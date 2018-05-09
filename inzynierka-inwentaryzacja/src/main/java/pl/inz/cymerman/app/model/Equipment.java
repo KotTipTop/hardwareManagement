@@ -26,6 +26,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Entity
 @Data
@@ -59,6 +60,7 @@ public class Equipment {
 	@ManyToOne
 	@JoinColumn(name = "location_id")
 	private Location location;
+	private boolean active;
 
 	@CreatedDate
 	@Column(nullable = true)
@@ -73,5 +75,11 @@ public class Equipment {
 	@LastModifiedBy
 	@Column(nullable = true)
 	private String lastModifiedBy;
+	
+	//testy jednostkowe
+	public Equipment(Long id, boolean active) {
+		this.id = id;
+		this.active = active;
+	}
 
 }

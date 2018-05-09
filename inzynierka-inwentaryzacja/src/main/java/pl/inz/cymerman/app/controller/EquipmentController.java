@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -88,6 +90,18 @@ public class EquipmentController {
 	public String add(ModelMap model, @ModelAttribute("AddNewModal") EquipmentAddFormDTO e) {
 		Equipment equipment = converter.convert(e, Equipment.class);
 		equipmentService.save(equipment);
+		return "redirect:/equipment/";
+	}
+	@GetMapping("/delete")
+	public String delete(ModelMap model,Long id ) {
+		equipmentService.delete(id);
+		return "redirect:/equipment/";
+	}
+	@GetMapping("/active")
+	public String active(ModelMap model,Long id ) {
+		Equipment e = equipmentService.findOne(id);
+		e.setActive(true);
+		equipmentService.save(e);
 		return "redirect:/equipment/";
 	}
 

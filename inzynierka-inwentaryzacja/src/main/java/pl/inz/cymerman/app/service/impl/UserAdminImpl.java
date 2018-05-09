@@ -42,7 +42,10 @@ public class UserAdminImpl implements UserService {
 
 	@Override
 	public void delete(Long id) {
-		userRepository.delete(id);
+		User u = userRepository.findOne(id);
+		u.setActive(false);
+		userRepository.saveAndFlush(u);
+		
 
 	}
 

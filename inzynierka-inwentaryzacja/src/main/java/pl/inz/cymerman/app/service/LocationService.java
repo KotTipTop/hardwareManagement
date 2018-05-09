@@ -7,6 +7,4 @@ import pl.inz.cymerman.app.model.Location;
 public interface LocationService {
 	List<Location> findAll();
 	Location findOne(Long id);
-	void delete(Long id);
-	Location save(Location model);
 }

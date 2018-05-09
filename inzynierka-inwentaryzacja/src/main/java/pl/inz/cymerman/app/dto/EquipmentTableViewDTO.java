@@ -21,5 +21,6 @@ public class EquipmentTableViewDTO {
 	private String serialNumber;
 	private BigDecimal price;
 	private OwnershipOwnerOnlyDTO owner;
+	private boolean active;
 	
 }

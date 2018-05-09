@@ -22,7 +22,7 @@ public class CategoryServiceImplTest {
 	@InjectMocks
 	private CategoryServiceImpl categoryService;
 	
-
+	//list
 	@Test
 	public void shouldGetCategoryList() {
 		//given
@@ -33,7 +33,7 @@ public class CategoryServiceImplTest {
 		Assert.assertEquals(2, categories.size());	
 
 	}
-
+	//get by id
 	@Test
 	public void shouldGetCategoryById() {
 		//given

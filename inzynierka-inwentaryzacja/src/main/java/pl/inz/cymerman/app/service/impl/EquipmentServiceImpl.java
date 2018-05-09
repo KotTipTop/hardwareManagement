@@ -42,7 +42,9 @@ public class EquipmentServiceImpl implements EquipmentService {
 
 	@Override
 	public void delete(Long id) {
-		equipmentRepository.delete(id);
+		Equipment e = equipmentRepository.findOne(id);
+		e.setActive(false);
+		equipmentRepository.saveAndFlush(e);
 
 	}
 

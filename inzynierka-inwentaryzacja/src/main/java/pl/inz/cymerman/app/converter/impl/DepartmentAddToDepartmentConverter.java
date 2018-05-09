@@ -11,7 +11,7 @@ public class DepartmentAddToDepartmentConverter implements SimpleObjectConverter
 
 	@Override
 	public Department mapTo(DepartmentAddFormDTO from) {
-		return Department.builder().name(from.getName()).build();
+		return Department.builder().name(from.getName()).active(true).build();
 	}
 
 
