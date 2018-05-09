@@ -27,11 +27,6 @@ public class OwnershipServiceImpl implements OwnershipService{
 		return ownershipRepository.findOne(id);
 	}
 	@Override
-	public void delete(Long id) {
-		ownershipRepository.delete(id);
-		
-	}
-	@Override
 	public Ownership save(Ownership model) {
 		return ownershipRepository.save(model);
 	}

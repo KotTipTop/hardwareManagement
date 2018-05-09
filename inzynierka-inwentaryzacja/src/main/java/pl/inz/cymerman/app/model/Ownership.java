@@ -42,4 +42,9 @@ public class Ownership {
 	@ManyToOne()
 	@JoinColumn(name = "location_id")
 	private Location location;
+	
+	public Ownership(Long id) {
+		this.id = id;
+	}
+	
 }
