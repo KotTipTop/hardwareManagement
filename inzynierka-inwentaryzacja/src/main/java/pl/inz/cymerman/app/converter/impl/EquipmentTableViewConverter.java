@@ -18,13 +18,13 @@ public class EquipmentTableViewConverter implements SimpleObjectConverter<Equipm
 	public EquipmentTableViewDTO mapTo(Equipment from) {
 		return EquipmentTableViewDTO.builder()
 				.id(from.getId())
-				.category(CategoryNameOnlyDTO.builder()
-				.id(from.getCategory().getId()).name(from.getCategory().getName()).build()).manufacturer(from.getManufacturer())
+				.category(from.getCategory()!=null?CategoryNameOnlyDTO.builder()
+				.id(from.getCategory().getId()).name(from.getCategory().getName()).build():null).manufacturer(from.getManufacturer())
 				.model(from.getModel())
 				.dateOfPurchase(from.getDateOfPurchase())
 				.serialNumber(from.getSerialNumber())
 				.price(from.getPrice())
-				.owner(findOwner(from.getHistory()))
+				.owner(from.getHistory()!=null?findOwner(from.getHistory()):null)
 				.active(from.isActive())
 				.build();
 	}

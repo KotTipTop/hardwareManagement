@@ -6,6 +6,4 @@ import pl.inz.cymerman.app.model.Role;
 public interface RoleService {
 	List<Role> findAll();
 	Role findOne(Long id);
-	void delete(Long id);
-	Role save(Role model);
 }

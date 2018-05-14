@@ -8,11 +8,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Project {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -22,5 +29,8 @@ public class Project {
 	private Set<Equipment> projectequip;
 	@OneToMany(mappedBy="project")
 	private Set<Ownership> ownershipInProject;
+	public Project(Long id) {
+		this.id = id;
+	}
 
 }

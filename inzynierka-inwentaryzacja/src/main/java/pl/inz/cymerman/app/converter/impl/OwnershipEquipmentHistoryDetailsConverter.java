@@ -16,9 +16,9 @@ public class OwnershipEquipmentHistoryDetailsConverter implements SimpleObjectCo
 	public OwnershipEquipmentHistoryDetailsDTO mapTo(Ownership from) {
 		return OwnershipEquipmentHistoryDetailsDTO.builder()
 				.id(from.getId())
-				.owner(UserNameOnlyDTO.builder()
+				.owner(from.getOwner()!=null?UserNameOnlyDTO.builder()
 						.id(from.getOwner().getId())
-						.fullName(from.getOwner().getName()+" "+from.getOwner().getSurname()).build())
+						.fullName(from.getOwner().getName()+" "+from.getOwner().getSurname()).build():null)
 				.allocationStartDate(from.getAllocationStartDate()!=null ? from.getAllocationStartDate() : null)
 				.allocationEndDate(from.getAllocationEndDate()!=null ? from.getAllocationEndDate():null)
 				.location(from.getLocation()!=null? LocationNameOnlyDTO.builder()

@@ -12,12 +12,12 @@ import pl.inz.cymerman.app.service.ProjectService;
 
 @Service
 @Transactional
-public class ProjectServicesImpl implements ProjectService{
+public class ProjectServiceImpl implements ProjectService{
 
 	private final ProjectRepository projectRepostiory;
 	
 	@Autowired
-	public ProjectServicesImpl(ProjectRepository projectRepostiory) {
+	public ProjectServiceImpl(ProjectRepository projectRepostiory) {
 		this.projectRepostiory = projectRepostiory;
 	}
 
@@ -31,14 +31,5 @@ public class ProjectServicesImpl implements ProjectService{
 		return projectRepostiory.findOne(id);
 	}
 
-	@Override
-	public void delete(Long id) {
-		projectRepostiory.delete(id);
-	}
-
-	@Override
-	public Project save(Project model) {
-		return projectRepostiory.saveAndFlush(model);
-	}
 
 }

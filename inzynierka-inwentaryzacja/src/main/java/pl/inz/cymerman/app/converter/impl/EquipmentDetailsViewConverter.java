@@ -23,7 +23,7 @@ public class EquipmentDetailsViewConverter implements SimpleObjectConverter<Equi
 	public EquipmentViewDetailsDTO mapTo(Equipment from) {
 		return EquipmentViewDetailsDTO.builder()
 				.id(from.getId())
-				.categoryName(CategoryNameOnlyDTO.builder().id(from.getCategory().getId()).name(from.getCategory().getName()).build())
+				.categoryName(from.getCategory()!=null?CategoryNameOnlyDTO.builder().id(from.getCategory().getId()).name(from.getCategory().getName()).build():null)
 				.manufacturer(from.getManufacturer())
 				.model(from.getModel())
 				.dateOfPurchase(from.getDateOfPurchase())

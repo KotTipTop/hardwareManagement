@@ -26,7 +26,7 @@ public class EquipmentEditToEquipmentConverter implements SimpleObjectConverter<
 	public Equipment mapTo(EquipmentEditFormDTO from) {
 
 		return Equipment.builder()//
-				.category(categoryRepository.findOne(from.getCategoryId()))//
+				.category(from.getCategoryId()!=null?categoryRepository.findOne(from.getCategoryId()):null)//
 				.manufacturer(from.getManufacturer())//
 				.model(from.getModel())//
 				.serialNumber(from.getSerialNumber())//

@@ -29,15 +29,6 @@ public class RoleServiceImpl implements RoleService{
 		return roleRepository.findOne(id);
 	}
 
-	@Override
-	public void delete(Long id) {
-		roleRepository.delete(id);
-		
-	}
 
-	@Override
-	public Role save(Role model) {
-		return roleRepository.saveAndFlush(model);
-	}
 	
 }

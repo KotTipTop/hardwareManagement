@@ -19,9 +19,9 @@ public class UserAdminPageConverter implements SimpleObjectConverter<User, UserD
 
 	@Override
 	public UserDetailsAdminPageInfoDTO mapTo(User from) {
-		return UserDetailsAdminPageInfoDTO.builder().id(from.getId()).fullName(from.getName() + " " + from.getSurname())
-				.roles(from.getRoles().stream().map(roleConverter::mapTo).collect(Collectors.toSet()))
-				.department(DepartmentNameOnlyDTO.builder().id(from.getDepartment().getId()).name(from.getDepartment().getName()).build())
+		return UserDetailsAdminPageInfoDTO.builder().id(from.getId()).fullName(from.getName()!=null? from.getName() + " " + from.getSurname():null)
+				.roles(from.getRoles()!=null?from.getRoles().stream().map(roleConverter::mapTo).collect(Collectors.toSet()):null)
+				.department(from.getDepartment()!=null?DepartmentNameOnlyDTO.builder().id(from.getDepartment().getId()).name(from.getDepartment().getName()).build():null)
 				.build();
 
 	}

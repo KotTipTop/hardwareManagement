@@ -5,15 +5,17 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import pl.inz.cymerman.app.model.Location;
 import pl.inz.cymerman.app.repository.LocationRepository;
 
 
-
+@RunWith(MockitoJUnitRunner.class)
 public class LocationServiceImplTest {
 	@Mock
 	private LocationRepository repository;
