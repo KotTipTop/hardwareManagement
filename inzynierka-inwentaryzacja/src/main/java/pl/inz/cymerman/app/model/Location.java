@@ -25,6 +25,7 @@ public class Location {
 	private String name;
 	@OneToMany(mappedBy="location")
 	private Set<Ownership> ownershipInLocation;
+	
 	public Location(Long id) {
 		this.id = id;
 	}

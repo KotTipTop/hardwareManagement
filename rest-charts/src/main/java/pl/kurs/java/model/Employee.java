@@ -1,12 +1,9 @@
-package pl.inz.cymerman.app.model;
-
-import java.util.Set;
+package pl.kurs.java.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,19 +15,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Project {
-	
+public class Employee {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private Long projectNumber;
-	@OneToMany(mappedBy="project")
-	private Set<Equipment> projectEquip;
-	@OneToMany(mappedBy="project")
-	private Set<Ownership> ownershipInProject;
-	public Project(Long id) {
-		this.id = id;
-	}
-
+	private String surname;
+	private String position;
+	private int salary;
 }

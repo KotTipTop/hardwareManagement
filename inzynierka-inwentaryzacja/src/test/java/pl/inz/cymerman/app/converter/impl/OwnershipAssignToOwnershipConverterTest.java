@@ -1,5 +1,6 @@
 package pl.inz.cymerman.app.converter.impl;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -7,7 +8,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import junit.framework.Assert;
+
 import pl.inz.cymerman.app.dto.OwnershipAssignFormDTO;
 import pl.inz.cymerman.app.model.Equipment;
 import pl.inz.cymerman.app.model.Location;
